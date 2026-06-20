@@ -38,8 +38,8 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ../webapp/sql:/docker-entrypoint-initdb.d
-      - /etc/mysql/my.cnf:/etc/mysql/my.cnf:ro
-      - /var/log/mysql/slow.log:/var/log/mysql/slow.log
+      - ./my.cnf:/etc/mysql/my.cnf:ro
+      - ./slow.log:/var/log/mysql/slow.log
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -uisucon -pisucon
       start_period: 60s
