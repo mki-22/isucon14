@@ -8,6 +8,10 @@ tasks:
     cmds:
       - docker compose -f compose-go.yml up -d
     dir: ./development
+  up-no-cache:
+    cmds:
+      - docker compose -f compose-go.yml up -d --build
+    dir: ./development
   down:
     cmds:
       - docker compose -f compose-go.yml down -v --remove-orphans
@@ -20,7 +24,7 @@ tasks:
     sources:
       - webapp/sql/1-schema.sql
   go:build:
-    cmd: go build -o isuride{{exeExt}} .
+    cmd: go build -a -o isuride{{exeExt}} .
     dir: webapp/go
     sources:
       - ./*.go
